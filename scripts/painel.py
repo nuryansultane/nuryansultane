@@ -161,6 +161,38 @@ def contribuicoes(dias, hoje=None):
     return janela(W, H, 'contribuicoes.sh', corpo, est)
 
 
+
+PROJETOS = [
+    ('nserp', 'nsERP', 'Gestão empresarial', ['Vendas, reservas, facturação e stock,', 'pagamentos M-Pesa e loja online.'],
+     ['Laravel', 'React', 'TS', 'MariaDB'], '41 tabelas · 90 ecrãs · 310+ testes', 'monografia · testado na LemServices', C['ok']),
+    ('edufuturo', 'EduFuturo', 'Ensino online', ['Cursos em vídeo, exercícios e', 'certificados, em 4 línguas.'],
+     ['Laravel', 'React', 'TS', 'PWA'], '32 ecrãs · 90+ testes · IA', 'projeto pessoal', C['acc2']),
+    ('nsedu', 'nsEDU', 'Gestão académica', ['Matrículas, notas e pautas,', 'propinas e portal do estudante.'],
+     ['Laravel', 'React', 'TS', 'MariaDB'], '37 tabelas · 41 ecrãs · 85+ testes', 'em desenvolvimento', '#febc2e'),
+]
+
+
+def projeto(chave, nome, tipo, desc, stack, numeros, estado, cor_estado, atraso=0.0):
+    import base64
+    foto = base64.b64encode(open(os.path.join(AQUI, 'capas', chave + '.jpg'), 'rb').read()).decode()
+    W, H = 280, 318
+    x0 = 14
+    chips, cx = [], x0
+    for t in stack:
+        w = 12 + len(t) * 6.6
+        chips.append(f'<rect x="{cx:.1f}" y="244" width="{w:.1f}" height="20" rx="10" fill="{C["bg"]}" stroke="{C["borda"]}"/><text x="{cx+w/2:.1f}" y="258" font-size="10" text-anchor="middle" class="f">{escape(t)}</text>')
+        cx += w + 6
+    corpo = (f'<g class="ent" style="animation-delay:{atraso+.2:.2f}s"><clipPath id="cap{chave}"><rect x="{x0}" y="48" width="{W-2*x0}" height="{(W-2*x0)*280/532:.1f}" rx="6"/></clipPath>'
+             f'<image x="{x0}" y="48" width="{W-2*x0}" height="{(W-2*x0)*280/532:.1f}" href="data:image/jpeg;base64,{foto}" clip-path="url(#cap{chave})" preserveAspectRatio="xMidYMid slice"/>'
+             f'<rect x="{x0}" y="48" width="{W-2*x0}" height="{(W-2*x0)*280/532:.1f}" rx="6" fill="none" stroke="{C["borda"]}"/></g>'
+             f'<g class="ent" style="animation-delay:{atraso+.45:.2f}s"><text x="{x0}" y="{196}" font-size="17" font-weight="700">{escape(nome)}</text>'
+             f'<text x="{W-x0}" y="{196}" font-size="10" text-anchor="end" class="f">{escape(tipo)}</text>'
+             + ''.join(f'<text x="{x0}" y="{214+i*14}" font-size="10.5" class="f">{escape(l)}</text>' for i, l in enumerate(desc)) + '</g>'
+             f'<g class="ent" style="animation-delay:{atraso+.65:.2f}s">' + ''.join(chips) +
+             f'<text x="{x0}" y="284" font-size="10.5" class="a">{escape(numeros)}</text>'
+             f'<circle cx="{x0+4}" cy="300" r="3.5" fill="{cor_estado}"/><text x="{x0+13}" y="303.5" font-size="10" class="ap">{escape(estado)}</text></g>')
+    return janela(W, H, '~/projetos/' + chave, corpo)
+
 if __name__ == '__main__':
     os.makedirs(SAIDA, exist_ok=True)
     dias = None
@@ -172,4 +204,6 @@ if __name__ == '__main__':
         sys.exit('Sem dados: defina GITHUB_TOKEN ou use --dias ficheiro.json')
     open(os.path.join(SAIDA, 'whoami.svg'), 'w', encoding='utf-8').write(whoami())
     open(os.path.join(SAIDA, 'contribuicoes.svg'), 'w', encoding='utf-8').write(contribuicoes(dias))
+    for i, p in enumerate(PROJETOS):
+        open(os.path.join(SAIDA, 'projeto-' + p[0] + '.svg'), 'w', encoding='utf-8').write(projeto(*p, atraso=i * .25))
     print('painéis gerados:', sum(dias.values()), 'contribuições')

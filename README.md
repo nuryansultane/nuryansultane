@@ -16,14 +16,13 @@
 
 ### `$ ls ~/projetos`
 
-| Projeto | O que é | Stack |
-| --- | --- | --- |
-| **[nsERP](https://nuryansultane.github.io/#caso-nserp)** | Sistema de gestão empresarial: vendas, reservas, orçamentos, facturação, stock, pagamentos M-Pesa, site e catálogo da empresa. Projeto de monografia, testado na LemServices. | Laravel · React · TypeScript · MariaDB |
-| **[EduFuturo Digital](https://nuryansultane.github.io/#caso-edu)** | Plataforma de ensino online em 4 línguas (com changana e sena): cursos em vídeo, exercícios, certificados, mentorias e assistente de IA. | Laravel · React · TypeScript · PWA |
-| **[nsEDU](https://nuryansultane.github.io/#caso-nsedu)** | Gestão académica para faculdades e escolas: matrículas, inscrições, turmas, notas e pautas, propinas e portal do estudante. Em desenvolvimento. | Laravel · React · TypeScript · MariaDB |
-| **[Portfólio](https://github.com/nuryansultane/nuryansultane.github.io)** | O meu site: modo claro e escuro, português e inglês, e a foto do topo construída em código. | HTML · CSS · JavaScript · GSAP |
+<p align="center">
+  <a href="https://nuryansultane.github.io/#caso-nserp"><img src="assets/projeto-nserp.svg" width="280" alt="nsERP: sistema de gestão empresarial com vendas, reservas, facturação, stock, pagamentos M-Pesa e loja online. 41 tabelas, 90 ecrãs, mais de 310 testes."></a>
+  <a href="https://nuryansultane.github.io/#caso-edu"><img src="assets/projeto-edufuturo.svg" width="280" alt="EduFuturo Digital: plataforma de ensino online em 4 línguas, com cursos em vídeo, exercícios e certificados. 32 ecrãs, mais de 90 testes."></a>
+  <a href="https://nuryansultane.github.io/#caso-nsedu"><img src="assets/projeto-nsedu.svg" width="280" alt="nsEDU: gestão académica com matrículas, notas e pautas, propinas e portal do estudante. Em desenvolvimento."></a>
+</p>
 
-Os vídeos e as capturas dos projetos estão no [portfólio](https://nuryansultane.github.io).
+<p align="center"><sub>Carrega num cartão para ver as capturas e os vídeos no portfólio · o próprio <a href="https://github.com/nuryansultane/nuryansultane.github.io">portfólio</a> também é um projeto: HTML, CSS, JavaScript e GSAP.</sub></p>
 
 ### `$ cat stack.txt`
 
@@ -35,4 +34,4 @@ Os vídeos e as capturas dos projetos estão no [portfólio](https://nuryansulta
 
 <sub><b>In English:</b> full-stack developer from Mozambique building management systems and web applications with TypeScript, React, Laravel and Node.js. Open to freelance work and full-time roles.</sub>
 
-<sub>O painel de contribuições é gerado por <code>scripts/painel.py</code> e atualizado todos os dias pelo GitHub Actions.</sub>
+<sub>Os painéis são gerados por <code>scripts/painel.py</code>; as contribuições atualizam-se todos os dias pelo GitHub Actions.</sub>
